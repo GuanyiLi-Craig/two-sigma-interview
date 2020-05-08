@@ -8,15 +8,15 @@ description: >-
 
 ## Abstract
 
-Normally, there would be 3 rounds interviews. First round has two questions, first question normally is easy and then the next one could be a bit difficult. Then the second round would be one median level problem and a system / OO design question, or only system / OO design. Final round is either difficult problem or a system / OO design. 
+Normally, there would be 3 rounds interviews. First round has two questions, first question normally is easy and then the next one could be a bit difficult. Then the second round would be one median level problem and a system / OO design question, or only system / OO design. Final round is either difficult problem or a system / OO design.
 
 Afternoon interviews would be behaviour questions mixed up with the coding, system design and brain teaser problems. I believe the goal of the afternoon interviews would be the decision from team manager, who want to know that you can be the good fit to the team, like solving problems together, discussion and etc.
 
 This document references the posts in 1point3acres and the following docs. Thank you guys.
 
-{% embed url="https://www.dropbox.com/s/jvs0ingm5auduah/TwoSigmaOnsite.pdf?dl=0" %}
+{% embed url="https://www.dropbox.com/s/jvs0ingm5auduah/TwoSigmaOnsite.pdf?dl=0" caption="" %}
 
- [https://gaigai\_kris.gitbooks.io/interview-basic/two\_sigma.html](https://gaigai_kris.gitbooks.io/interview-basic/two_sigma.html)
+[https://gaigai\_kris.gitbooks.io/interview-basic/two\_sigma.html](https://gaigai_kris.gitbooks.io/interview-basic/two_sigma.html)
 
 [https://xiaoguan.gitbooks.io/prepare-for-interview/Two%20Sigma/ts-onsite-2.html](https://xiaoguan.gitbooks.io/prepare-for-interview/Two%20Sigma/ts-onsite-2.html)
 
@@ -39,14 +39,13 @@ This document references the posts in 1point3acres and the following docs. Thank
 
 {% tabs %}
 {% tab title="Code" %}
-```
+```text
 C++ code was copied from somewhere else. 
 Java code was created based the c++ code, and it works. 
 
 Design Pattern 
 
 * Factory Pattern
-
 ```
 {% endtab %}
 
@@ -225,7 +224,7 @@ public class Calculator {
         RPNCalculator calculator = new RPNCalculator();
         Double r = calculator.calculate(test);
         System.out.println(r);
-        
+
     }
 }
 ```
@@ -247,19 +246,19 @@ class Operand : public Token {
     public: Operand(const string &str) { 
         m_val = stod(str); 
     } 
-    
+
     double val() const { 
         return m_val; 
     } 
-    
+
     virtual bool isOperator() const { 
         return false; 
     } 
-    
+
     virtual void process(stack &stk) const { 
         stk.push(m_val); 
     } 
-    
+
     private: double m_val; 
 };
 
@@ -270,12 +269,12 @@ class Operator : public Token {
     const string & type() const { 
         return m_type; 
     } 
-    
+
     virtual ~Operator() = 0;
     virtual bool isOperator() const { 
         return true; 
     } 
-    
+
     private: string m_type; 
 }; 
 Operator::~Operator() {}
@@ -388,7 +387,7 @@ class Calculator {
    1. token -- operand and operator inherit from token 
    2. unary and ternary operators -- add a variable of NumOperands 
    3. factory design pattern 
-      1.  Factory design pattern is a class where you can hide the creation logic of all sub-classes. Typically, it would require a type and generate an object of sub-class. Essentially, it’s a mapping from types sub-classes. 
+      1. Factory design pattern is a class where you can hide the creation logic of all sub-classes. Typically, it would require a type and generate an object of sub-class. Essentially, it’s a mapping from types sub-classes. 
    4. 怎么才能直接给用户binary, 让他们可以自由的添加新的operator
       1. 更好的办法是做XML / JSON的serialization
 2. Key Points
@@ -412,7 +411,7 @@ struct node{
 
 {% tabs %}
 {% tab title="Code" %}
-```
+```text
 C++ was copied from somewhere else
 Java was based on the C++, it works.
 ```
@@ -500,15 +499,15 @@ public class RemoveSubtree {
         List<Integer> nums = Arrays.asList(1, 5, 5, 2, 2, -1, 3);
         ArrayTree at = new ArrayTree(nums);
         System.out.println(at.getTreeSize());
-        
+
         at.deleteSubTree(3);
         // 5
         System.out.println(at.getTreeSize());
-        
+
         at.deleteSubTree(6);
         // 5
         System.out.println(at.getTreeSize());
-        
+
         at.deleteSubTree(2);
 
         // 3
@@ -534,7 +533,7 @@ class ArrayTree {
              nodes.push_back(new Node(i)); size ++; 
         } 
     }
-    
+
     void deleteSubtree(int idx) {
         if (!nodes[idx]->valid) // if already deleted
             return;
@@ -560,7 +559,7 @@ class ArrayTree {
             nodes[idx]->visited = true;
             return nodes[idx]->valid;
         }
-    
+
         nodes[idx]->visited = true;
         // current validness depends on parent validness
         bool isParentValid = explore(nodes[idx]->parentIdx);
@@ -584,16 +583,16 @@ int main() {
     vector<int> nums = {1, 5, 5, 2, 2, -1, 3};
     ArrayTree at(nums);
     at.print();
-    
+
     at.deleteSubtree(3);
     at.print();
-    
+
     at.deleteSubtree(6);
     at.print();
-    
+
     at.deleteSubtree(2);
     at.print();
-    
+
     return 0;
 }
 ```
@@ -632,7 +631,7 @@ However, becasue the blocking queue could be blocked, because there is no new
 incoming data. Thus two threads would be the solution. 
 
 C++ code is coyied from somewhere else
-Java code is based on the C++ code, and it works. 
+Java code is based on the C++ code, and it works.
 ```
 {% endtab %}
 
@@ -734,7 +733,7 @@ class ReadFromQueues implements Runnable {
             }
         }
     }
-    
+
     private void calculate(double ts) {
         q1.add(ts);
         if (!q2.isEmpty()) {
@@ -772,7 +771,7 @@ class WriteToQueue implements Runnable {
                 e.printStackTrace();
             }
         }
-	}
+    }
 } 
 
 public class TwoQueueCompare {
@@ -825,11 +824,9 @@ public class TwoQueueCompare {
       4. Each thread need to maintain a list of indexes which point to the un-explored position of other queues. 
       5. Every time a thread get a new data, start from the current index and find the last index suite the condition of each other queues. 
 
-
-
 #### Question 2: Slow Web Accessing
 
-![](.gitbook/assets/image.png)
+![](https://github.com/BitForceStudio/two-sigma-interview/tree/11c3f0b937363050ac4332e823f7bf292900b0f7/.gitbook/assets/image.png)
 
 {% tabs %}
 {% tab title="Before Diagnose" %}
@@ -903,7 +900,7 @@ As backend services, database / cluster should also has the metrics to help the 
 
 [https://leetcode.com/problems/wildcard-matching/solution/](https://leetcode.com/problems/wildcard-matching/solution/)
 
-The solution should start from **DP solution**. The testing cases should be added at beginning. 
+The solution should start from **DP solution**. The testing cases should be added at beginning.
 
 * Step 1: Recursive Solution
 * Step 2: DP solution
@@ -921,15 +918,15 @@ Dp solution and backtrack solution are copied from leetcode
 class Solution {
     public boolean isMatch(String s, String p) {
         int sLen = s.length(), pLen = p.length();
-        
+
         // base cases
         if (p.equals(s) || p.equals("*")) return true;
         if (p.isEmpty() || s.isEmpty()) return false;
-        
+
         // init all matrix except [0][0] element as False
         boolean[][] d = new boolean[pLen + 1][sLen + 1];
         d[0][0] = true;
-        
+
         // DP compute
         for(int pIdx = 1; pIdx < pLen + 1; pIdx++) {
             // the current character in the pattern is '*'
@@ -1091,7 +1088,7 @@ public void test_question_mark_and_star() {
 {% tab title="Code" %}
 ```text
 The for loop should be trivial.
-Bit mask is what interveiwer wanted. It should be explained clearly. 
+Bit mask is what interveiwer wanted. It should be explained clearly.
 ```
 {% endtab %}
 
@@ -1185,28 +1182,28 @@ class RandomModFiveIterator implements Iterator<Integer> {
         this.randomIter = randomIter;
     }
 
-	  @Override
-	  public boolean hasNext() {
-		    if (!hasNextValue && randomIter.hasNext()) {
+      @Override
+      public boolean hasNext() {
+            if (!hasNextValue && randomIter.hasNext()) {
             nextValue = randomIter.next();
             while (randomIter.hasNext() && nextValue%5 != 0) {
                 nextValue = randomIter.next();
             }
             hasNextValue = (nextValue % 5) == 0;
         }
-		    return hasNextValue;
-	  }
+            return hasNextValue;
+      }
 
-	  @Override
-	  public Integer next() {
-		    if (hasNext()) {
+      @Override
+      public Integer next() {
+            if (hasNext()) {
             hasNextValue = false;
             return nextValue;
         } else {
             throw new NoSuchElementException("No avaliable elements");
         }
     }
-    
+
     public void remove() {
         randomIter.remove();
     }
@@ -1270,7 +1267,7 @@ public class RandomModFive {
 * Follow ups:
     o Infinite grid
     o Large grid but alive points are sparse
-    o Solve it using distribued system  
+    o Solve it using distribued system
 ```
 {% endtab %}
 
@@ -1386,7 +1383,7 @@ class Solution {
                 }
             }
         }
-        
+
         // Get the final representation for the newly updated board.
         for (int i = 0; i < row; i++) {
             for (int j = 0; j < col; j++) {
@@ -1403,7 +1400,7 @@ class Solution {
 {% endtab %}
 
 {% tab title="Follow ups" %}
-```
+```text
 * Infinite Grid
     o Data stracture: Map<Integer, Map<Integer, Integer>> lives
     o Better to define a new class to handle the get, put, update and etc
@@ -1417,8 +1414,7 @@ class Solution {
     o A zookeeper should record the state of each server
     o If all servers' state are the same, then start next step
     o In order to calculate the elements on boarder, a store layer or server
-      communicate with each other (ask zookeeper first).  
-
+      communicate with each other (ask zookeeper first).
 ```
 {% endtab %}
 
@@ -1464,7 +1460,7 @@ class BoardMap {
 
 class InfiniteBoardGameOfLife {
     BoardMap lives;
-    
+
     public InfiniteBoardGameOfLife(BoardMap lives) {
         this.lives = lives;
     }
@@ -1595,7 +1591,7 @@ Then the following operations
     o concat(lastNode)
 * Search
     o Iteriter inorder traverse.
-    o Boyer-Moore search algorithm.  
+    o Boyer-Moore search algorithm.
 ```
 {% endtab %}
 
@@ -1841,7 +1837,6 @@ public class TextEditorImpl implements ITextEditor {
         return curr;
     }
 }
-
 ```
 {% endtab %}
 
@@ -1925,7 +1920,7 @@ public boolean put(@Nullable K key, @Nullable V value) {
 */
 private void removeValuesForKey(Object key) {
     Collection<V> collection = Maps.safeRemove(map, key);
-    
+
     if (collection != null) {
         int count = collection.size();
         collection.clear();
@@ -1941,12 +1936,11 @@ public Collection<V> get(@Nullable K key) {
     }
     return wrapCollection(key, collection);
 }
-
 ```
 {% endtab %}
 
 {% tab title="Tests" %}
-```
+```text
 
 ```
 {% endtab %}
@@ -1980,7 +1974,7 @@ Solution key points
 * put(key, value)
     o check the existence of the key, update the value, update the node.
     o check size limit
-    
+
 protected boolean removeEldestEntry(Map.Entry eldest) {
                     return size() > CAPACITY;
                 }
@@ -1995,7 +1989,7 @@ class LRUCache {
         public int value;
         public DLinkedNode prev;
         public DLinkedNode next;
-        
+
         public DLinkedNode(int key, int value) {
             this.key = key;
             this.value = value;
@@ -2003,13 +1997,13 @@ class LRUCache {
             this.next = null;
         }
     }
-    
+
     private DLinkedNode head;
     private DLinkedNode tail;
     private Map<Integer, DLinkedNode> map;
     private int capacity;
     private int size;
-    
+
     public LRUCache(int capacity) {
         this.capacity = capacity;
         size = 0;
@@ -2019,7 +2013,7 @@ class LRUCache {
         head.next = tail;
         tail.prev = head;
     }
-    
+
     public int get(int key) {
         if (!map.containsKey(key)) return -1;
         DLinkedNode node = map.get(key);
@@ -2027,7 +2021,7 @@ class LRUCache {
         addNode(node);
         return node.value;
     }
-    
+
     public void put(int key, int value) {
         if (capacity == 0) return;
         if (map.containsKey(key)) {
@@ -2047,14 +2041,14 @@ class LRUCache {
             size++;
         }
     }
-    
+
     private void addNode(DLinkedNode node) {
         node.next = head.next;
         head.next.prev = node;
         head.next = node;
         node.prev = head;
     }
-    
+
     private void removeNode(DLinkedNode node) {
         node.prev.next = node.next;
         node.next.prev = node.prev;
@@ -2073,7 +2067,7 @@ Map<T, T> m = Collections.synchronizedMap(new LinkedHashMap<T,T>(capacity));
 {% endtab %}
 
 {% tab title="Caffeine" %}
-```
+```text
 
 ```
 {% endtab %}
@@ -2103,7 +2097,7 @@ class LRUCache {
         public int value;
         public DLinkedNode prev;
         public DLinkedNode next;
-        
+
         public DLinkedNode(int key, int value) {
             this.key = key;
             this.value = value;
@@ -2111,13 +2105,13 @@ class LRUCache {
             this.next = null;
         }
     }
-    
+
     private DLinkedNode head;
     private DLinkedNode tail;
     private Map<Integer, DLinkedNode> map;
     private int capacity;
     private int size;
-    
+
     public LRUCache(int capacity) {
         this.capacity = capacity;
         size = 0;
@@ -2127,7 +2121,7 @@ class LRUCache {
         head.next = tail;
         tail.prev = head;
     }
-    
+
     public int get(int key) {
         if (!map.containsKey(key)) return -1;
         DLinkedNode node = map.get(key);
@@ -2135,7 +2129,7 @@ class LRUCache {
         addNode(node);
         return node.value;
     }
-    
+
     public void put(int key, int value) {
         if (capacity == 0) return;
         if (map.containsKey(key)) {
@@ -2155,14 +2149,14 @@ class LRUCache {
             size++;
         }
     }
-    
+
     private void addNode(DLinkedNode node) {
         node.next = head.next;
         head.next.prev = node;
         head.next = node;
         node.prev = head;
     }
-    
+
     private void removeNode(DLinkedNode node) {
         node.prev.next = node.next;
         node.next.prev = node.prev;
@@ -2215,7 +2209,7 @@ class LFUCache {
     private Map<Integer, LinkedHashSet<Integer>> list;
     int capacity;
     int min;
-    
+
     public LFUCache(int capacity) {
         this.capacity = capacity;
         this.min = 1;
@@ -2224,10 +2218,10 @@ class LFUCache {
         this.list = new HashMap<Integer, LinkedHashSet<Integer>>();
         this.list.put(min, new LinkedHashSet<Integer>());
     }
-    
+
     public int get(int key) {
         if (!values.containsKey(key)) return -1;
-        
+
         int keyCount = count.get(key);
         list.get(keyCount).remove(key);
         if (list.get(keyCount).size() == 0) {
@@ -2238,7 +2232,7 @@ class LFUCache {
         count.put(key, keyCount + 1); 
         return values.get(key);
     }
-    
+
     public void put(int key, int value) {
         if (capacity == 0) return;
         if (values.containsKey(key)) {
@@ -2250,7 +2244,7 @@ class LFUCache {
                 values.remove(evitKey);
                 count.remove(evitKey);
                 list.get(min).remove(evitKey);
-                
+
                 if (list.get(min).size() == 0) {
                     list.remove(min);
                 }
@@ -2262,7 +2256,6 @@ class LFUCache {
         }
     }
 }
-
 ```
 {% endtab %}
 {% endtabs %}
@@ -2283,12 +2276,11 @@ class LFUCache {
 
 {% tabs %}
 {% tab title="State Transfer" %}
-![](.gitbook/assets/image%20%281%29.png)
+![](https://github.com/BitForceStudio/two-sigma-interview/tree/11c3f0b937363050ac4332e823f7bf292900b0f7/.gitbook/assets/image%20%281%29.png)
 {% endtab %}
 
 {% tab title="Code" %}
 ```text
-
 base case：
 dp[-1][k][0] = dp[i][0][0] = 0
 dp[-1][k][1] = dp[i][0][1] = -prices[0]
@@ -2366,7 +2358,7 @@ public int maxProfit(int[] prices) {
     if (len<=1) {
         return 0;
     }
-    
+
     int dp10 = 0, dp11 = -prices[0];
     int dp20 = 0, dp21 = -prices[0];
     for (int i=0;i<len;i++) {
@@ -2386,7 +2378,7 @@ public int maxProfit(int[] prices) {
     if (len<=1) {
         return 0;
     }
-    
+
     int[] leftMax = new int[len];
     int minLeft = prices[0];
     for (int i=1;i<len;i++) {
@@ -2417,7 +2409,7 @@ public int maxProfit(int[] prices) {
 public int maxProfit(int k, int[] prices) {
     int len = prices.length;
     if (k >= len / 2) return quickSolve(prices);
-    
+
     int[][][] t = new int[len][k+1][2];
     t[0][0][1] = -prices[0];
     for (int i = 1; i < len; i++) {
@@ -2429,7 +2421,7 @@ public int maxProfit(int k, int[] prices) {
     }
     return t[len-1][k][0];
 }
-    
+
 
 private int quickSolve(int[] prices) {
     int len = prices.length, profit = 0;
@@ -2501,7 +2493,7 @@ class Solution {
             // **BUG: Index bound
             int left2 = mid2 == 0 ? Integer.MIN_VALUE : nums2[mid2-1];
             int right2 = mid2 == len2 ? Integer.MAX_VALUE : nums2[mid2];
-            
+
             if (right1 >= left2 && right2 >= left1) {
                 // **BUG: even and odd
                 if ((len1 + len2) % 2 == 0) {
@@ -2558,7 +2550,6 @@ public void testEvenEvenLengthArray() {
 public void testOddOddLengthArray() {
     // overlap and non overlap
 }
-
 ```
 {% endtab %}
 {% endtabs %}
@@ -2605,7 +2596,7 @@ switch (choice) {
     case LOGIN:
         //TODO: implement function to support user login
 }
-        
+
 // ATM class has the following members
 
 AccountStore _accountstore;   // store the account created at this ATM
@@ -2616,7 +2607,7 @@ CashIntake _cashintake;       // handles cash deposit
 {% endtab %}
 
 {% tab title="Before" %}
-```
+```text
 There are several questions should be asked in front
 * output 有什么限制吗?
 Assumption: 只能是20美元的倍数
@@ -2627,7 +2618,7 @@ Assumption: ATM永远有足够的余额 (Bonus: 这里可以考虑如果不够�
 * Can we assume there will be no transactions when using ATM 
     o like if want to withdraw money but at mean time direct debt cut some money
     o This is concurrent
-* Should message between ATM and Bank encrypt? 
+* Should message between ATM and Bank encrypt?
 ```
 {% endtab %}
 
@@ -2639,16 +2630,16 @@ Display
            ActionType inputActionSelection();
            AccountType inputAccountSelection();
            float inputAmount();
-           
+
            void outputWrongPassword();
            void outputInsufficientAmount();
            void outputAuthExpired();
-           
+
 Session    
            String getSessionId();
            void updateSessionTime();
            boolean isExpired()
-           
+
 Account
            boolean getAuthFromBank();
            float inquiry(AccountType type);
@@ -2658,12 +2649,12 @@ Account
            boolean setting(char[] newPassword);
            void displayDetail();
            boolean logout();
-           
+
 CardHolder
            Account getAccount(char[] cardNumber) throw Exception;
            void retainCard();
            boolean returnCard();
-           
+
 CashDispenser 
            boolean isSufficient(float amount);
            float[] popCash(float amount);
@@ -2675,7 +2666,7 @@ CashIntake
 {% endtab %}
 
 {% tab title="State" %}
-```
+```text
 AtmState
             NOTACTIVE
             CREATEACCOUNT
@@ -2731,7 +2722,7 @@ AccountType
             state = AtmState.ERROR;
         }
     }
-    
+
     private void login() throws Exception {
         for (int i=0;i<5;i++) {
             if (account.getAuth(displayConsole.inputPassword())) {
@@ -2797,20 +2788,18 @@ AccountType
             }
         }
     }
-    
+
     private void setState(AtmState state) {
         this.state = state;
         startServe();
     }
-    
-    
 ```
 {% endtab %}
 {% endtabs %}
 
 ## Set 4
 
-The questions in this set are varies. I add all questions whose frequency is higher than the others in this set. Also some of the questions from other set would also be asked in this set. 
+The questions in this set are varies. I add all questions whose frequency is higher than the others in this set. Also some of the questions from other set would also be asked in this set.
 
 ### Round 1 Refrigerator
 
@@ -2839,7 +2828,7 @@ Possible solutions
 * It is a producer - consumer model
 * Lock
     o Some mates said about mutex, semaphore, sychronization and ReeentrantLock
-    
+
 * The code is based on my search and understanding. I left the eggLock to demo
   that when there is no lock, it may be error message.
 ```
@@ -2951,7 +2940,7 @@ class Refrigerator {
             if (eggCount < 0 || eggCount > limit.get(Food.EGG) || 
                 milkCount < 0 || milkCount > limit.get(Food.MILK) || 
                 bananaCount < 0 || bananaCount > limit.get(Food.BANANA)) {
-                
+
                 System.out.print(
                     String.format("error message: egg %d milk %d banana %d \n", 
                                     eggCount, milkCount, bananaCount));
@@ -3023,7 +3012,7 @@ public class RefrigeratorImpl {
         }); 
 
         Thread badMateOne = new Thread(new Runnable(){
-        
+
             @Override
             public void run() {
                 for (int i=0;i<30;i++) {
@@ -3077,7 +3066,7 @@ public class RefrigeratorImpl {
         goodMateEgg.start();
         goodMateMilk.start();
         goodMateBanana.start();
-        
+
         badMateOne.start();
         badMateTwo.start();
         badMateThree.start();
@@ -3260,7 +3249,7 @@ class SuperStack {
 {% endtab %}
 
 {% tab title="Demo & test" %}
-```
+```text
 1: test exceptions
 2: test stack pop, push and peek
 3: test min & max stack
@@ -3300,11 +3289,11 @@ class Solution {
         if (len1 == 0 || len2 == 0) {
             return num1 + num2;
         }
-        
+
         if (num1.equals("0") || num2.equals("0")) {
             return "0";
         }
-        
+
         String res = "0";
         for (int i=len1-1;i>=0;i--) {
             int n = num1.charAt(i) - '0';
@@ -3312,10 +3301,10 @@ class Solution {
             String oneMultiple = multipleOneDigit(num2, n, len1-i-1);
             res = addString(oneMultiple, res);
         }
-        
+
         return res;
     }
-    
+
     private String multipleOneDigit(String num, int n, int tailingZeros) {
         char[] charArray = num.toCharArray();
         int len = charArray.length;
@@ -3334,14 +3323,14 @@ class Solution {
         }
         return res;
     }
-    
+
     private String addString(String n1, String n2) {
         int len1 = n1.length();
         int len2 = n2.length();
         if (len1 == 0 || len2 == 0) {
             return n1 + n2;
         }
-        
+
         int carry = 0;
         String res = "";
         while (len1>0 && len2>0) {
@@ -3351,14 +3340,14 @@ class Solution {
             res = Integer.toString(sum%10) + res;
             carry = sum/10;
         }
-        
+
         while (len1>0) {
             int d1 = n1.charAt(--len1) - '0';
             int sum = d1 + carry;
             res = Integer.toString(sum%10) + res;
             carry = sum/10;
         }
-        
+
         while (len2>0) {
             int d2 = n2.charAt(--len2) - '0';
             int sum = d2 + carry;
@@ -3397,7 +3386,7 @@ class Solution {
 
 ### Statistic City Power & Temp
 
- 给一个csv文件，存有array of\(城市，日期，温度，电用量\)。要求知道每个城市每天最高温度和最高电用量。而且需要在知道了结果以后立刻print（比如一个城市到了第二天，就要立刻打印出之前一天的数据），而且需要按照知道答案的顺序print（这里其实有edge case需要考虑不过track一下行数然后建一个queue就好了）。实现很简单，建一个hash table配上一个queue之类的就可以。注意一定要删掉之前存下来的cache，文件特...别....大....，电脑其实没多少内存。面试官有答案，与结果diff。
+给一个csv文件，存有array of\(城市，日期，温度，电用量\)。要求知道每个城市每天最高温度和最高电用量。而且需要在知道了结果以后立刻print（比如一个城市到了第二天，就要立刻打印出之前一天的数据），而且需要按照知道答案的顺序print（这里其实有edge case需要考虑不过track一下行数然后建一个queue就好了）。实现很简单，建一个hash table配上一个queue之类的就可以。注意一定要删掉之前存下来的cache，文件特...别....大....，电脑其实没多少内存。面试官有答案，与结果diff。
 
 ### Weighted Sampling
 
@@ -3626,7 +3615,7 @@ class Game {
     private Set<Player> players;
     private PlayerFactory playerFactory;
     private int totalSteps;
-    
+
     public Game(Board board, int totalSteps) {
         this.board = board;
         this.totalSteps = totalSteps;
@@ -3683,9 +3672,7 @@ public class GameImpl {
 
 ## Some other useful links
 
-{% embed url="https://github.com/donnemartin/system-design-primer/blob/master/README.md" %}
+{% embed url="https://github.com/donnemartin/system-design-primer/blob/master/README.md" caption="" %}
 
-{% embed url="https://juejin.im/post/5c5cf03ef265da2dd218a4c8" %}
-
-
+{% embed url="https://juejin.im/post/5c5cf03ef265da2dd218a4c8" caption="" %}
 
